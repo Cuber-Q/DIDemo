@@ -3,9 +3,6 @@ package com.cuber.dif.framework.basis;
 import java.util.HashMap;
 import java.util.Set;
 
-import com.cuber.dif.demo.Action;
-import com.cuber.dif.framework.basis.annotation.Inject;
-
 public class GloabelBeanFactory {
 	private static HashMap<String,Object> beanFactory;
 	
