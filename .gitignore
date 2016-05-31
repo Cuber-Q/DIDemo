@@ -1,0 +1,5 @@
+#ignore .setting, .classpath, .project, .class file and so on
+*.settings
+*.classpath
+*.project
+bin/
