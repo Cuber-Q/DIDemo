@@ -1,12 +1,13 @@
-package com.cuber.dif.demo;
+package com.cuber.dif.demo.action;
 
+import com.cuber.dif.demo.service.ServiceA;
 import com.cuber.dif.framework.basis.annotation.Dependent;
 import com.cuber.dif.framework.basis.annotation.Inject;
 
 @Inject
-public class Action {
+public class ActionA {
 	@Dependent
-	private Service service;
+	private ServiceA service;
 	
 	public void doSth(){
 		System.out.println("[Action] Now I will do something.");

@@ -22,32 +22,32 @@ public class PackageScanner {
 	    PACKAGE_FILE_PATH = packageNameVar.replace(".", "\\");
 	    packageURL = classLoader.getResource(packageNameVar.replace(".", "/"));
 
-	    if(packageURL.getProtocol().equals("jar")){
-	        String jarFileName;
-	        JarFile jf ;
-	        Enumeration<JarEntry> jarEntries;
-	        String entryName;
-
-	        // build jar file name, then loop through zipped entries
-	        jarFileName = URLDecoder.decode(packageURL.getFile(), "UTF-8");
-	        jarFileName = jarFileName.substring(5,jarFileName.indexOf("!"));
-	        System.out.println(">"+jarFileName);
-	        jf = new JarFile(jarFileName);
-	        jarEntries = jf.entries();
-	        while(jarEntries.hasMoreElements()){
-	            entryName = jarEntries.nextElement().getName();
-	            if(entryName.startsWith(packageNameVar) && entryName.length()>packageNameVar.length()+5){
-	                entryName = entryName.substring(packageNameVar.length(),entryName.lastIndexOf('.'));
-	                names.add(entryName);
-	            }
-	        }
-
-	    // loop through files in classpath
-	    }else{
-	    	URI uri = new URI(packageURL.toString());
-	    	getClassNamesRecursively(uri.getPath());
-	    }
-	    return null;
+//	    if(packageURL.getProtocol().equals("jar")){
+//	        String jarFileName;
+//	        JarFile jf ;
+//	        Enumeration<JarEntry> jarEntries;
+//	        String entryName;
+//
+//	        // build jar file name, then loop through zipped entries
+//	        jarFileName = URLDecoder.decode(packageURL.getFile(), "UTF-8");
+//	        jarFileName = jarFileName.substring(5,jarFileName.indexOf("!"));
+//	        System.out.println(">"+jarFileName);
+//	        jf = new JarFile(jarFileName);
+//	        jarEntries = jf.entries();
+//	        while(jarEntries.hasMoreElements()){
+//	            entryName = jarEntries.nextElement().getName();
+//	            if(entryName.startsWith(packageNameVar) && entryName.length()>packageNameVar.length()+5){
+//	                entryName = entryName.substring(packageNameVar.length(),entryName.lastIndexOf('.'));
+//	                names.add(entryName);
+//	            }
+//	        }
+//
+//	    // loop through files in classpath
+//	    }else{
+//	    }
+	    URI uri = new URI(packageURL.toString());
+	    getClassNamesRecursively(uri.getPath());
+	    return names;
 	}
 	
 	public static void getClassNamesRecursively(String pathName){

@@ -1,6 +1,7 @@
 package com.cuber.dif.framework.basis;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class RegisterExecutor {
 	public static void register(Class<?> clazz){
@@ -25,6 +26,17 @@ public class RegisterExecutor {
 			e.printStackTrace();
 		} catch (Exception e){
 			e.printStackTrace();
+		}
+	}
+	
+	public static void register(List<String> clazzNames){
+		for(String name : clazzNames){
+			try {
+				register(Class.forName(name));
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				System.out.println("class not found, " + name);
+			}
 		}
 	}
 	
