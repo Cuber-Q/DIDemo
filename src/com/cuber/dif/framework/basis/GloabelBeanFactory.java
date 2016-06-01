@@ -17,12 +17,11 @@ public class GloabelBeanFactory {
 		beanFactory.put(getClassName(obj), obj);
 	}
 	
-	//can be toke into reflect util
 	protected static String getClassName(Object obj){
 		return obj.getClass().getName();
 	}
 	
-	public static Object getBean(Class clazz) {
+	public static Object getBean(Class<?> clazz) {
 		// TODO Auto-generated method stub
 		return getBean(clazz.getName());
 	}
@@ -31,11 +30,6 @@ public class GloabelBeanFactory {
 		return beanFactory.get(className);
 	}
 	
-	//will be used in test case
-	public static HashMap<String, Object> getBeanFactory(){
-		return beanFactory;
-	}
-
 	public static void showBeans(){
 		Set<String> keySet = beanFactory.keySet();
 		for(String key : keySet){
